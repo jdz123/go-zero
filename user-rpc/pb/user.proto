@@ -1,0 +1,22 @@
+syntax = "proto3"; //proto 版本
+
+option go_package = "./pb"; //新版本必须加./
+
+package pb;
+
+
+//model
+
+message GetUserInfoReq {
+  int64  id = 1;
+}
+message GetUserInfoResp {
+   int64  id = 1;
+   string nickname = 2;
+}
+
+
+//service
+service usercenter {
+  rpc GetUserInfo(GetUserInfoReq) returns(GetUserInfoResp);
+}

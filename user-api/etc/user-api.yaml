@@ -1,0 +1,19 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 8888
+
+Log:
+    ServiceName:user-api
+    Mode:file
+    Path:logs
+    Level:error
+    Encoding:plain
+    Compress:true
+    KeepDays:7
+
+DB:
+    DataSource: root:root@tcp(127.0.0.1:3306)/zero-demo?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+Cache:
+    - Host:127.0.0.1:6379
+     Pass:123456

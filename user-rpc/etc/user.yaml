@@ -1,0 +1,7 @@
+Name: user.rpc
+ListenOn: 0.0.0.0:9080
+Mode:dev
+Etcd:
+  Hosts:
+  - 0.0.0.0:2379
+  Key: user.rpc

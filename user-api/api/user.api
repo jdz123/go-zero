@@ -1,0 +1,45 @@
+syntax = "v1"
+//介绍
+info(
+	author: "user-api"
+	date:   "2022-03-26"
+	desc:   "api语法示例及语法说明"
+)
+
+//请求参数
+type UserInfoRequest {
+	UserId int64 `json:"userId"`
+}
+
+type UserUpdateRequest {
+	UserId int64 `json:"userId"`
+}
+
+//返回参数
+type UserInfoResponse {
+	UserId   int64  `json:"userId"`
+	Nickname string `json:"nickname"`
+}
+
+type UserUpdateResponse {
+	UserId   int64  `json:"userId"`
+	Nickname string `json:"nickname"`
+}
+
+//执行goctl api go -api user.api -dir ../ --style=goZero
+@server(
+	group:user       //会放到统一的user文件夹下
+	prefix:userapi/v1
+	middleware:TestMiddleware
+)
+
+//服务里面所有的方法
+service user-api{
+	@doc "获取用户信息"
+	@handler userInfo
+	post /user/info (UserInfoRequest) returns (UserInfoResponse)
+	
+	@doc "修改用户信息"
+	@handler userUpdate
+	post /user/update (UserUpdateRequest) returns (UserUpdateResponse)
+}

@@ -18,5 +18,6 @@ message GetUserInfoResp {
 
 //service
 service usercenter {
+  
   rpc GetUserInfo(GetUserInfoReq) returns(GetUserInfoResp);
 }
